@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  v1:
+    image: valeriodesiati/grpc_p2p_chat-v1:latest
+    build: .
+    ports:
+      - "5000:5000"
+      - "50050:50050"
+      - "5001:5001"
+      - "50051:50051"
