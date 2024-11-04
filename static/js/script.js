@@ -4,10 +4,19 @@ const userInput = document.getElementById('userInput');
 const chatMessages = document.getElementById('chatMessages');
 
 // Function to add a message to the chat display
-function addMessage(user, message) {
+function addSendMessage(message) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('chat-message');
-    messageElement.innerHTML = `<span class="message-user">${user}</span>: <span class="message-text">${message}</span>`;
+    messageElement.innerHTML = `<span class="message-text-send">${message}</span>`;
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the latest message
+}
+
+// Function to add a message to the chat display
+function addReceivedMessage(user, message) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('chat-message');
+    messageElement.innerHTML = `<span class="message-user-receive">${user}</span>: <span class="message-text-receive">${message}</span>`;
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the latest message
 }
@@ -17,10 +26,9 @@ sendMessageButton.addEventListener('click', () => {
 	const message = messageInput.value.trim(); // Get message from input
 	const user = userInput.value.trim(); // Get username from input
 	if (message && user) { 
-        addMessage(user, message);
+        addSendMessage(message);
         messageInput.value = '';
         dataToSend = JSON.stringify({ user, message }); //JSONify username and message
-        console.log("data to send" + dataToSend);
 
         // Send a POST request with username and message in JSON format
         fetch('/send_message', {
@@ -50,12 +58,11 @@ function pollMessages() {
             return response.text(); // Gest the response in text format
         })
         .then(text => {
-            if (text)
-                console.log(text);
+            if (text) {
                 const data = JSON.parse(text);
-                if (data.user && data.message) { 
-                    addMessage(data.user, data.message); // Display chat
-                }
+                if (data.user && data.message)
+                    addReceivedMessage(data.user, data.message); // Display chat
+            }
         })
         .catch(error => console.error('Error receiving message:', error)); 
 }

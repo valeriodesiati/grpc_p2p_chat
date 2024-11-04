@@ -30,14 +30,19 @@ body {
 	margin-bottom: 15px;
 }
 
-.message-user {
+.message-text-send {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 10px;
+}
+
+.message-user-receive {
 	font-weight: bold;
 	color: #007bff;
 }
 
-.message-text {
-	margin-left: 10px;
-	display: inline-block;
+.message-text-receive {
+	margin-bottom: 10px;
 }
 
 .chat-input {
