@@ -1,5 +1,6 @@
 const sendMessageButton = document.getElementById('sendMessageButton');
 const messageInput = document.getElementById('messageInput');
+const userInput = document.getElementById('userInput');
 const chatMessages = document.getElementById('chatMessages');
 
 // Function to add a message to the chat display
@@ -13,20 +14,23 @@ function addMessage(user, message) {
 
 // Event listener for when the send button is clicked
 sendMessageButton.addEventListener('click', () => {
-	const message = messageInput.value.trim(); // Get the message input value 
-	if (message) { 
-        addMessage('You', message);
+	const message = messageInput.value.trim(); // Get message from input
+	const user = userInput.value.trim(); // Get username from input
+	if (message && user) { 
+        addMessage(user, message);
         messageInput.value = '';
+        dataToSend = JSON.stringify({ user, message }); //JSONify username and message
+        console.log("data to send" + dataToSend);
 
-        // Send the message to the server using a POST request
+        // Send a POST request with username and message in JSON format
         fetch('/send_message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ message }) // Send the message in the request body
+            body: dataToSend
         })
-        .catch(error => console.error('Error sending message:', error)); 
+        .catch(error => console.error('Errore durante l\'invio del messaggio:', error)); 
     }
 });
 
@@ -39,11 +43,19 @@ messageInput.addEventListener('keypress', (event) => {
 function pollMessages() {
     // Send a GET request to check for received messages
     fetch('/receive_message')
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) { // If there's a message in the response
-                addMessage('Peer', data.message); // Add the peer's message to the chat
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nella risposta del server');
             }
+            return response.text(); // Gest the response in text format
+        })
+        .then(text => {
+            if (text)
+                console.log(text);
+                const data = JSON.parse(text);
+                if (data.user && data.message) { 
+                    addMessage(data.user, data.message); // Display chat
+                }
         })
         .catch(error => console.error('Error receiving message:', error)); 
 }

@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11protos/chat.proto\x12\x04\x63hat\"\x1e\n\x0b\x43hatMessage\x12\x0f\n\x07message\x18\x01 \x01(\t2?\n\x0b\x43hatService\x12\x30\n\x04\x43hat\x12\x11.chat.ChatMessage\x1a\x11.chat.ChatMessage(\x01\x30\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11protos/chat.proto\x12\x04\x63hat\",\n\x0b\x43hatMessage\x12\x0c\n\x04user\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t2?\n\x0b\x43hatService\x12\x30\n\x04\x43hat\x12\x11.chat.ChatMessage\x1a\x11.chat.ChatMessage(\x01\x30\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,7 +32,7 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'protos.chat_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_CHATMESSAGE']._serialized_start=27
-  _globals['_CHATMESSAGE']._serialized_end=57
-  _globals['_CHATSERVICE']._serialized_start=59
-  _globals['_CHATSERVICE']._serialized_end=122
+  _globals['_CHATMESSAGE']._serialized_end=71
+  _globals['_CHATSERVICE']._serialized_start=73
+  _globals['_CHATSERVICE']._serialized_end=136
 # @@protoc_insertion_point(module_scope)

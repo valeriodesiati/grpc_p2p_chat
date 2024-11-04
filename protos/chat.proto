@@ -4,7 +4,8 @@ package chat;
 
 // The chat message
 message ChatMessage {
-    string message = 1;
+    string user = 1;
+    string message = 2;
 }
 
 // The chat service definition
