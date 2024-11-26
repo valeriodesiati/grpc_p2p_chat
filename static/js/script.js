@@ -88,5 +88,4 @@ function pollMessages() {
         .catch(error => console.error('Error receiving messages:', error));
 }
 
-// Avvia polling ogni 3 secondi
-setInterval(pollMessages, 3000);
+setInterval(pollMessages, 200);
