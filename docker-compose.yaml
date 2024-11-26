@@ -1,8 +1,6 @@
-version: "3.8"
-
 services:
   v1:
-    image: valeriodesiati/grpc_p2p_chat-v1:latest
+    image: valeriodesiati/grpc_p2p_chat:latest
     build: .
     ports:
       - "5000:5000"

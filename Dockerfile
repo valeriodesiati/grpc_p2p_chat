@@ -3,11 +3,11 @@ FROM python:3.9-slim-buster
 # Set the working directory inside the container
 WORKDIR /usr/local/app
 
-# Install the application dependencies
-RUN pip install --no-cache-dir grpcio grpcio-tools Flask
-
 # Copy in the source code and the startup script
 COPY . .
+
+# Install the application dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Make sure the startup script has execute permissions
 RUN chmod +x ./start_clients.sh

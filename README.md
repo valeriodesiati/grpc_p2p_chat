@@ -63,7 +63,6 @@ grpc-p2p-chat/
 ├── Dockerfile
 ├── LICENSE
 ├── client.py
-├── client2.py
 ├── compile.sh
 ├── docker-compose.yaml
 ├── protos
