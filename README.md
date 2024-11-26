@@ -29,7 +29,7 @@ Before running the application, make sure you have the following installed:
 2. Install the required Python packages:
 
    ```bash
-   pip install grpcio grpcio-tools Flask
+   pip install -r requirements.txt
    ```
 
 3. Compile the Protocol Buffers:
@@ -59,12 +59,15 @@ Before running the application, make sure you have the following installed:
 ## Directory Structure
 
 ```
+
 grpc-p2p-chat/
 ├── Dockerfile
 ├── LICENSE
+├── README.md
 ├── client.py
 ├── compile.sh
 ├── docker-compose.yaml
+├── docker_deploy.sh
 ├── protos
 │   ├── __pycache__
 │   │   ├── chat_pb2.cpython-311.pyc
@@ -72,6 +75,7 @@ grpc-p2p-chat/
 │   ├── chat.proto
 │   ├── chat_pb2.py
 │   └── chat_pb2_grpc.py
+├── requirements.txt
 ├── start_clients.sh
 ├── static
 │   ├── css
@@ -80,6 +84,7 @@ grpc-p2p-chat/
 │       └── script.js
 └── templates
     └── chat.html
+
 ```
 
 ## License
