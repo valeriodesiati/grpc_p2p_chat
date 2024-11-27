@@ -13,7 +13,7 @@ A peer-to-peer chat application built with gRPC and Flask that allows two client
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/valeriodesiati/grpc-p2p-chat.git
+   git clone [https://github.com/valeriodesiati/grpc-p2p-chat.git](https://github.com/valeriodesiati/grpc_p2p_chat.git)
    cd grpc-p2p-chat
    ```
 
