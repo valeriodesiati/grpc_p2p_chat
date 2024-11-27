@@ -46,7 +46,7 @@ def start_server():
     chat_pb2_grpc.add_ChatServiceServicer_to_server(ChatService(), server)  # Register the ChatService to the gRPC server
     server.add_insecure_port(f'[::]:{LOCAL_PORT}')
     server.start()
-    print(f"Server started on port {LOCAL_PORT}")
+    print(f"Server  gRPC started on port {LOCAL_PORT}")
     return server
 
 def send_message_to_peer(user, message, message_queue):
@@ -82,7 +82,7 @@ def send_message():
 def receive_message():
     try:
         # Try to get a message from the queue with a timeout
-        user, message = MESSAGE_QUEUE.get(timeout=5)
+        user, message = MESSAGE_QUEUE.get(timeout=1)
         return jsonify({'user': user, 'message': message}), 200
     except queue.Empty:
         # Return a 204 status when no messages are available
@@ -91,6 +91,7 @@ def receive_message():
 def serve_flask():
     print("Starting Flask server...")
     app.run(debug=True, use_reloader=False, port=FLASK_PORT, host="0.0.0.0")
+    print(f"Server FLask started on port {FLASK_PORT}")
 
 def serve_grpc():
     print("Starting gRPC server...")

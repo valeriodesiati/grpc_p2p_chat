@@ -74,18 +74,17 @@ function pollMessages() {
         .then(response => {
             if (response.status === 204) {
                 console.log('No new messages');
-            } else {
-                return response.json();
+                return null;
             }
+            return response.json();
         })
         .then(data => {
-            if (data) {
-                console.log(`${data.user}: ${data.message}`);
-                // Aggiungi il messaggio alla chat
+            if (data && data.user && data.message) {
                 addReceivedMessage(data.user, data.message);
             }
         })
         .catch(error => console.error('Error receiving messages:', error));
+
 }
 
 setInterval(pollMessages, 200);

@@ -8,16 +8,7 @@ A peer-to-peer chat application built with gRPC and Flask that allows two client
 - **Web Interface**: A simple and responsive web interface for chatting, built with Flask and Bootstrap.
 - **Threading**: Uses threading to run both the gRPC server and Flask web server concurrently.
 
-## Getting Started
-
-### Prerequisites
-
-Before running the application, make sure you have the following installed:
-
-- gRPC
-- Flask
-
-### Installation
+## Installation and run
 
 1. Clone the repository:
 
@@ -26,23 +17,6 @@ Before running the application, make sure you have the following installed:
    cd grpc-p2p-chat
    ```
 
-2. Install the required Python packages:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Compile the Protocol Buffers:
-
-   Make sure you have the `.proto` files in the `protos` directory and run:
-
-   ```bash
-   ./compile.sh
-   ```
-
-### Running the Application
-
-1. Open a terminal window.
 2. Run
 
    ```bash
@@ -58,33 +32,31 @@ Before running the application, make sure you have the following installed:
 
 ## Directory Structure
 
-```
-
+```bash
 grpc-p2p-chat/
-├── Dockerfile
-├── LICENSE
-├── README.md
-├── client.py
-├── compile.sh
-├── docker-compose.yaml
-├── docker_deploy.sh
-├── protos
-│   ├── __pycache__
-│   │   ├── chat_pb2.cpython-311.pyc
-│   │   └── chat_pb2_grpc.cpython-311.pyc
-│   ├── chat.proto
-│   ├── chat_pb2.py
-│   └── chat_pb2_grpc.py
-├── requirements.txt
-├── start_clients.sh
-├── static
-│   ├── css
-│   │   └── styles.css
-│   └── js
-│       └── script.js
-└── templates
-    └── chat.html
-
+   ├── Dockerfile
+   ├── LICENSE
+   ├── README.md
+   ├── client.py
+   ├── compile.sh
+   ├── docker-compose.yaml
+   ├── docker_deploy.sh
+   ├── protos
+   │   ├── __pycache__
+   │   │   ├── chat_pb2.cpython-311.pyc
+   │   │   └── chat_pb2_grpc.cpython-311.pyc
+   │   ├── chat.proto
+   │   ├── chat_pb2.py
+   │   └── chat_pb2_grpc.py
+   ├── requirements.txt
+   ├── start_clients.sh
+   ├── static
+   │   ├── css
+   │   │   └── styles.css
+   │   └── js
+   │       └── script.js
+   └── templates
+      └── chat.html
 ```
 
 ## License
