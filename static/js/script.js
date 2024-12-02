@@ -47,28 +47,6 @@ messageInput.addEventListener('keypress', (event) => {
         sendMessageButton.click();
 });
 
-// // Function to poll for new messages from the server
-// function pollMessages() {
-//     // Send a GET request to check for received messages
-//     fetch('/receive_message')
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Errore nella risposta del server');
-//             }
-//             return response.text(); // Gest the response in text format
-//         })
-//         .then(text => {
-//             if (text) {
-//                 const data = JSON.parse(text);
-//                 if (data.user && data.message)
-//                     addReceivedMessage(data.user, data.message); // Display chat
-//             }
-//         })
-//         .catch(error => console.error('Error receiving message:', error)); 
-// }
-
-// setInterval(pollMessages, 200);
-
 function pollMessages() {
     fetch('/receive_message')
         .then(response => {
